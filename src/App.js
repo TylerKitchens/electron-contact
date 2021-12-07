@@ -1,10 +1,22 @@
+import { useEffect } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 
 import Avatar from '@components/avatar'
+
 function App() {
+
+  useEffect(() => {
+    //When user clicks new contact in menu
+    window.ipcRenderer.on('new-contact', (e, msg) => {
+      alert(msg)
+    })
+    
+
+  }, [])
   return (
     <div className="App">
       <Container fluid>
@@ -24,10 +36,10 @@ function App() {
                 <Avatar fName='Tyler' lName='Kitchens' /> Tyler Kitchens
               </td>
               <td>
-                tylerktichens23@Gmail.com
+                <a href="mailto:tylerktichens23@gmail.com">tylerkitchens23@gmail.com</a>
               </td>
               <td>
-                7703375352
+                <a href="tel:+17703375352">7703375352</a>
               </td>
             </tr>
           </tbody>
